@@ -1,0 +1,52 @@
+##########
+# Build artifacts
+##########
+# Maven
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+.pax-exam/
+
+##########
+# Logs
+##########
+*.log
+*.log.*
+hs_err_pid*
+replay_pid*
+
+##########
+# IDEs & tooling
+##########
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+# Eclipse
+.project
+.classpath
+.settings/
+
+##########
+# OS junk
+##########
+.DS_Store
+Thumbs.db
+
+##########
+# Environment & local overrides
+##########
+# Spring / Java
+application-*.yml
+*.env
+.env.*
+
+##########
+# Flyway & Liquibase generated sql (if any)
+/db/migration/*_checksum.sql
+
+##########
+# Docker
+##########
+/docker-compose.override.yml
+**/*.pid                     # container PID files

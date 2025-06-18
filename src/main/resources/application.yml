@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: "local"
+  application:
+    name: SafeCube Backend
+  datasource:
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      pool-name: safecube-hikari
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: never
+
+logging:
+  level:
+    root: INFO
+
+server:
+  port: 8080
+
