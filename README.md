@@ -40,4 +40,4 @@
 |------|---------|
 | JDK  | 21 |
 | Maven | 3.9.x |
-| PostgreSQL | 16+ (local) |
+| PostgreSQL | 17+ (local) |
