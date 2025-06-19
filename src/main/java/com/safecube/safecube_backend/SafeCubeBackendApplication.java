@@ -12,7 +12,7 @@ public class SafeCubeBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SafeCubeBackendApplication.class, args);
-		log.info("Application started at: {}}", LocalDateTime.now());
+		log.info("Application started at: {}", LocalDateTime.now());
 	}
 
 }
