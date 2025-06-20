@@ -46,7 +46,7 @@ class CreateVerificationTokenAdapterTest {
         EmailVerificationTokenEntity capturedEntity = entityCaptor.getValue();
         assertNotNull(capturedEntity, "Captured entity should not be null.");
         assertEquals(token, capturedEntity.getToken(), "Token in the entity should match the input token.");
-        assertEquals(userId, capturedEntity.getUserId(), "UserId in the entity should match the input userId.");
+        assertEquals(userId, capturedEntity.getUser().getId(), "UserId in the entity should match the input userId.");
         assertFalse(capturedEntity.isUsed(), "The 'used' flag should be false for a new token.");
 
         Instant expectedMinExpiry = beforeCall.plus(24, ChronoUnit.HOURS);

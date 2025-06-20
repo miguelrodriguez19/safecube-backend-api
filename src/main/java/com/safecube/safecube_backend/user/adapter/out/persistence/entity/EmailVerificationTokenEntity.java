@@ -1,9 +1,6 @@
 package com.safecube.safecube_backend.user.adapter.out.persistence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,11 +17,11 @@ import java.util.UUID;
  * @since 0.2.0
  */
 @Entity
-@Table(name = "email_verification_tokens")
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "email_verification_tokens")
 public class EmailVerificationTokenEntity {
 
     /**
@@ -34,10 +31,11 @@ public class EmailVerificationTokenEntity {
     private UUID token;
 
     /**
-     * The ID of the user associated with this token.
+     * The user associated with this token.
      */
-    @Column(name = "user_id", nullable = false)
-    private UUID userId;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
 
     /**
      * The timestamp when this token expires.

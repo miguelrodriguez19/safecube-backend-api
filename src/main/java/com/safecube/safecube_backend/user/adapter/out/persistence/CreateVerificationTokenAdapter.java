@@ -1,6 +1,7 @@
 package com.safecube.safecube_backend.user.adapter.out.persistence;
 
 import com.safecube.safecube_backend.user.adapter.out.persistence.entity.EmailVerificationTokenEntity;
+import com.safecube.safecube_backend.user.adapter.out.persistence.entity.UserEntity;
 import com.safecube.safecube_backend.user.adapter.out.persistence.repository.EmailVerificationTokenJpaRepository;
 import com.safecube.safecube_backend.user.domain.port.out.CreateVerificationTokenPort;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,9 @@ public class CreateVerificationTokenAdapter implements CreateVerificationTokenPo
     public void save(UUID token, UUID userId) {
         var entity = EmailVerificationTokenEntity.builder()
                 .token(token)
-                .userId(userId)
+                .user(UserEntity.builder()
+                        .id(userId)
+                        .build())
                 .expiresAt(Instant.now().plus(24, ChronoUnit.HOURS))
                 .used(false)
                 .build();

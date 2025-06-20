@@ -18,11 +18,11 @@ import java.util.UUID;
  * @since 0.1.0
  */
 @Entity
-@Table(name = "users")
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
 public class UserEntity {
 
     /**
@@ -53,12 +53,14 @@ public class UserEntity {
      * Indicates whether the user's email address has been verified. Defaults to false.
      */
     @Column(name = "email_verified", nullable = false)
+    @Builder.Default
     private boolean emailVerified = false;
 
     /**
      * The number of failed login attempts for the user. Defaults to 0.
      */
     @Column(name = "failed_login_attempts", nullable = false)
+    @Builder.Default
     private int failedLoginAttempts = 0;
 
     /**
