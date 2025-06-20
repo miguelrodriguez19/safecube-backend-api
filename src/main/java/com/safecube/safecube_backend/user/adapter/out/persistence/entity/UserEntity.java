@@ -15,7 +15,7 @@ import java.util.UUID;
  * Represents a User entity in the database.
  *
  * @author miguelrodriguez19
- * @since 0.1.0
+ * @since 0.0.1
  */
 @Entity
 @Getter

@@ -16,7 +16,7 @@ import java.util.UUID;
  * to the database using a JPA repository.
  *
  * @author miguelrodriguez19
- * @since 0.2.0
+ * @since 0.0.2
  */
 @Component
 @RequiredArgsConstructor

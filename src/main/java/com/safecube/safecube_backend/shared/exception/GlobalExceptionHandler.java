@@ -18,7 +18,7 @@ import java.time.Instant;
  * simply throw their custom exceptions.</p>
  *
  * @author miguelrodriguez19
- * @since 0.2.1
+ * @since 0.0.3
  */
 @Slf4j
 @RestControllerAdvice

@@ -6,7 +6,7 @@ import com.safecube.safecube_backend.shared.exception.ApplicationException;
  * Thrown when a cryptographic operation (PBKDF2, AES-GCM, etc.) fails.
  *
  * @author miguelrodriguez19
- * @since 0.2.0
+ * @since 0.0.2
  */
 public class CryptoOperationException extends ApplicationException {
 

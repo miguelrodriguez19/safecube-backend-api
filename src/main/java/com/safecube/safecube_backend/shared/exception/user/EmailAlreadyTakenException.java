@@ -7,7 +7,7 @@ import com.safecube.safecube_backend.shared.exception.ApplicationException;
  * Mapped to HTTP 409 (CONFLICT).
  *
  * @author miguelrodriguez19
- * @since 0.2.1
+ * @since 0.0.3
  */
 public class EmailAlreadyTakenException extends ApplicationException {
 

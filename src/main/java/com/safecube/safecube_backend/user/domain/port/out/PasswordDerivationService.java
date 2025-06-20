@@ -5,7 +5,7 @@ package com.safecube.safecube_backend.user.domain.port.out;
  * Provides methods to generate salts and derive hashes.
  *
  * @author miguelrodriguez19
- * @since 0.2.0
+ * @since 0.0.2
  */
 public interface PasswordDerivationService {
 

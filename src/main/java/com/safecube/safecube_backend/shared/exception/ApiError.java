@@ -10,6 +10,6 @@ import java.time.Instant;
  * @param timestamp ISO-8601 instant when the error was produced
  *
  * @author miguelrodriguez19
- * @since 0.2.1
+ * @since 0.0.3
  */
 public record ApiError(String code, String message, Instant timestamp) { }

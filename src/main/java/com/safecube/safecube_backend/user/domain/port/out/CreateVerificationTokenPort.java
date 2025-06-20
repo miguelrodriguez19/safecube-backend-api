@@ -6,7 +6,7 @@ import java.util.UUID;
  * Port for creating and saving a verification token for a user.
  *
  * @author miguelrodriguez19
- * @since 0.2.0
+ * @since 0.0.2
  */
 public interface CreateVerificationTokenPort {
 

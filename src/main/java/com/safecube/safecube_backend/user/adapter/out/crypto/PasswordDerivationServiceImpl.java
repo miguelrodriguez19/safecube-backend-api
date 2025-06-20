@@ -15,7 +15,7 @@ import java.security.spec.KeySpec;
  * Configured via application properties (salt length, iterations, etc).
  *
  * @author miguelrodriguez19
- * @since 0.2.0
+ * @since 0.0.2
  */
 @Component
 public class PasswordDerivationServiceImpl implements PasswordDerivationService {

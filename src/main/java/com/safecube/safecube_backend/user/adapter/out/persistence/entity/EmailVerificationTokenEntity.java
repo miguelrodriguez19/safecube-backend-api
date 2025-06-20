@@ -14,7 +14,7 @@ import java.util.UUID;
  * This entity stores information about a token used to verify a user's email address.
  *
  * @author miguelrodriguez19
- * @since 0.2.0
+ * @since 0.0.2
  */
 @Entity
 @Getter

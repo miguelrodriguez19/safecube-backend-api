@@ -10,7 +10,7 @@ import java.util.UUID;
  * Service class for managing verification tokens.
  *
  * @author miguelrodriguez19
- * @since 0.2.0
+ * @since 0.0.2
  */
 @Service
 @RequiredArgsConstructor

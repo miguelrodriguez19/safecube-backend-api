@@ -5,7 +5,7 @@ package com.safecube.safecube_backend.shared.exception;
  * Extends {@link RuntimeException} so transactions are rolled back automatically.
  *
  * @author miguelrodriguez19
- * @since 0.2.0
+ * @since 0.0.2
  */
 public abstract class ApplicationException extends RuntimeException {
 
