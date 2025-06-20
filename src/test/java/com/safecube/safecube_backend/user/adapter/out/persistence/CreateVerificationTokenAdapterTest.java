@@ -2,6 +2,7 @@ package com.safecube.safecube_backend.user.adapter.out.persistence;
 
 import com.safecube.safecube_backend.user.adapter.out.persistence.entity.EmailVerificationTokenEntity;
 import com.safecube.safecube_backend.user.adapter.out.persistence.repository.EmailVerificationTokenJpaRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -18,6 +19,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+/**
+ * Unit tests for the {@link CreateVerificationTokenAdapter} class.
+ */
 @ExtendWith(MockitoExtension.class)
 class CreateVerificationTokenAdapterTest {
 
@@ -31,6 +35,7 @@ class CreateVerificationTokenAdapterTest {
     private ArgumentCaptor<EmailVerificationTokenEntity> entityCaptor;
 
     @Test
+    @DisplayName("save should create and save a new token with the correct details")
     void save_shouldCreateAndSaveTokenWithCorrectDetails() {
         UUID token = UUID.randomUUID();
         UUID userId = UUID.randomUUID();
