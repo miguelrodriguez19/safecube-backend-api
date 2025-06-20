@@ -14,7 +14,7 @@
 
     <groupId>com.safecube</groupId>
     <artifactId>safecube-backend</artifactId>
-    <version>0.2.0-SNAPSHOT</version>
+    <version>0.2.1-SNAPSHOT</version>
     <name>SafeCube Backend</name>
     <description>Safe Cube – Data Keeper API</description>
 
