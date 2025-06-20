@@ -9,6 +9,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.0</version>
+        <relativePath/>
     </parent>
 
     <groupId>com.safecube</groupId>
@@ -28,13 +29,14 @@
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <flyway.version>11.9.1</flyway.version>
         <springdoc.version>2.5.0</springdoc.version>
-
-        <!-- Build / tooling versions -->
-        <spotless.version>2.44.2</spotless.version>
-        <jacoco.version>0.8.10</jacoco.version>
         <testcontainers.version>1.21.2</testcontainers.version>
 
-        <maven.compiler.release>${java.version}</maven.compiler.release>
+        <!-- Tooling -->
+        <spotless.version>2.44.2</spotless.version>
+        <jacoco.version>0.8.10</jacoco.version>
+        <unitTesting.version>3.2.5</unitTesting.version>
+        <integrationTesting.version>3.2.5</integrationTesting.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -68,7 +70,7 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- Database / Migration -->
+        <!-- DB / Migration -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -151,7 +153,6 @@
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <!-- ────────────────────────────── -->
@@ -159,7 +160,7 @@
     <!-- ────────────────────────────── -->
     <build>
         <plugins>
-            <!-- Complier: adds MapStruct and Lombok as annotation processors -->
+            <!-- Compiler (MapStruct + Lombok) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -180,13 +181,13 @@
                 </configuration>
             </plugin>
 
-            <!-- Spring Boot run/package -->
+            <!-- Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Spotless automatic formatter -->
+            <!-- Spotless -->
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
@@ -205,20 +206,75 @@
                 </configuration>
             </plugin>
 
-            <!-- JaCoCo coverage -->
+            <!-- UNIT tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${unitTesting.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <excludes> <!-- Excludes integration tests -->
+                        <exclude>**/*IT.java</exclude>
+                    </excludes>
+                    <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+
+            <!-- INTEGRATION tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${integrationTesting.version}</version>
+                <executions>
+                    <execution>
+                        <id>integration-tests</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includes>
+                        <include>**/*IT.java</include>
+                    </includes>
+                    <excludes> <!-- Excludes unit tests -->
+                        <exclude>**/*Test.java</exclude>
+                    </excludes>
+                    <reuseForks>false</reuseForks>
+                </configuration>
+            </plugin>
+
+            <!-- Jacoco (unit + IT) -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco.version}</version>
                 <executions>
+                    <!-- Unit -->
                     <execution>
+                        <id>prepare-agent</id>
                         <goals><goal>prepare-agent</goal></goals>
                     </execution>
                     <execution>
-                        <id>report</id>
+                        <id>report-unit</id>
                         <phase>test</phase>
                         <goals><goal>report</goal></goals>
                     </execution>
+                    <!-- IT -->
+                    <execution>
+                        <id>prepare-agent-integration</id>
+                        <phase>pre-integration-test</phase>
+                        <goals><goal>prepare-agent</goal></goals>
+                    </execution>
+                    <execution>
+                        <id>report-integration</id>
+                        <phase>post-integration-test</phase>
+                        <goals><goal>report</goal></goals>
+                    </execution>
+                    <!-- Global coverage gate -->
                     <execution>
                         <id>check</id>
                         <phase>verify</phase>
